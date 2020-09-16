@@ -84,27 +84,13 @@ public class DemoQATests {
             buttonSubmitStudentRegistrationForm.click();
 
 
-
-//            6- Validar que sigo en student registration form
-//            7- Entrar letras en el mobile
-//            8- Assert que sigue rojo
-//            9- Entrar 10 dígitos
-//            10- Assert tick
-//            11- Entrar información en todos los campos (first name, last name, email, gender, mobile, DOB, subjects, hobbies, state and city).
-//            12- Click en submit
-//            13- Assert Thanks for submitting the form
-//            14- Validar que los valores sean correctos (guardar los valores que iba entrando en variables y usar esas variables)
-
-
-
         }catch (Exception e) {
             System.out.println("Se rompio" );
             e.printStackTrace();
         }finally {
 
 
-            driver.close();
-            driver.quit();
+            dispose(driver);
         }
 
 
@@ -115,6 +101,11 @@ public class DemoQATests {
         waiter(4000);
 
 
+    }
+
+    private static void dispose(WebDriver driver) {
+        driver.close();
+        driver.quit();
     }
 
     private static void waiter(int pTime) {

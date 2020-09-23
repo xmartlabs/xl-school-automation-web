@@ -1,10 +1,11 @@
 package com.xlschool;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.Color;
 
 public class DemoQATests {
     public static void main(String[] args) {
@@ -45,43 +46,74 @@ public class DemoQATests {
 
             //Step 2
             WebElement divForms = driver.findElement(By.xpath("//*[@class='category-cards']/div[contains(string(),'Forms')]"));
+            highlighElement(driver,divForms);
+            waiter(1000);
             divForms.click();
             waiter(2000);
 
             //Step 3
             WebElement spanForm = driver.findElement(By.xpath("//span[contains(string(),'Practice Form')]"));
+            highlighElement(driver,spanForm);
+            waiter(1000);
             spanForm.click();
 
             //Step 4 (Assert Student Registration Form)
-            waiter(4000);
+            waiter(2000);
             WebElement headerStudentRegistrationForm  = driver.findElement(By.xpath("//div[@class='practice-form-wrapper']//h5[contains(text(), 'Registration')]"));
+            highlighElement(driver,headerStudentRegistrationForm);
+            waiter(1000);
+
             String headerStudentRegistrationFormActualText = headerStudentRegistrationForm.getText();
             System.out.println("headerStudentRegistrationFormText = " + headerStudentRegistrationFormActualText);
 
-//            String headerStudentRegistrationFormText2 = headerStudentRegistrationForm.getAttribute("text");
-//            System.out.println("headerStudentRegistrationFormText2 = " + headerStudentRegistrationFormText2);
-
             String headerStudentRegistrationFormExpectedText = "Student Registration Form";
-            String resultado = "";
+            boolean resultado;
 
-            if (headerStudentRegistrationFormActualText.equals(headerStudentRegistrationFormExpectedText) == true ){
-                resultado = "Coincide";
-            }else if (headerStudentRegistrationFormActualText.equals(headerStudentRegistrationFormExpectedText) == false){
-                resultado = "No coincide y tamo leyendo cualquiera";
-            }
-
+            resultado = textCompare(headerStudentRegistrationFormActualText, headerStudentRegistrationFormExpectedText);
             System.out.println("El texto del título coincide?" + resultado);
 
 
             //Step 5 (Clickear submit)
-            waiter(4000);
+            waiter(2000);
             WebElement buttonSubmitStudentRegistrationForm = driver.findElement(By.id("submit"));
 
+            //Implementamos el metodo auxiliar 'scrollToElement' que utiliza un JavaScriptExecutor para mover el driver al elemento y hacer el click
+            scrollToElement(driver,buttonSubmitStudentRegistrationForm);
 
-            // Acá se programa un actions para poder hacer scroll primero al elemento, para que sea visible, y posteriormente hacerle click.
-            Actions action = new Actions(driver);
-            action.moveToElement(buttonSubmitStudentRegistrationForm).build().perform();
+            highlighElement(driver,buttonSubmitStudentRegistrationForm);
+            waiter(2000);
+
             buttonSubmitStudentRegistrationForm.click();
+            waiter(2000);
+
+            //Step 6 (Validar que sigo en el mismo form)
+            scrollToElement(driver,headerStudentRegistrationForm);
+            highlighElement(driver,headerStudentRegistrationForm);
+            waiter(1000);
+            resultado = textCompare(headerStudentRegistrationFormActualText, headerStudentRegistrationFormExpectedText);
+            System.out.println("El texto del título coincide? => " + resultado);
+
+
+            //Step 7 (Ingresar letras en el mobile)
+            WebElement inputMobile = driver.findElement(By.xpath("//*[@id='userNumber']"));
+            highlighElement(driver,inputMobile);
+            waiter(1000);
+            inputMobile.sendKeys("trebol");
+            String inputMobileBorderColorHexExpected = "#dc3545";
+            waiter(1000);
+            String inputMobileBorderColorHexActual = Color.fromString(inputMobile.getCssValue("border-color")).asHex();
+            boolean resultadoInputColor = textCompare(inputMobileBorderColorHexActual,inputMobileBorderColorHexExpected);
+            System.out.println("El color de borde coincide? => " + resultadoInputColor);
+
+
+
+
+
+
+
+
+
+            waiter(2000);
 
 
         }catch (Exception e) {
@@ -102,6 +134,28 @@ public class DemoQATests {
 
 
     }
+
+
+    private static Boolean textCompare(String pActualText, String pExpectedText) {
+        boolean resultado = false;
+        if (pActualText.equals(pExpectedText)){
+            resultado = true;
+        }else if (pActualText.equals(pExpectedText)){
+            resultado = false;
+        }
+        return resultado;
+    }
+
+    public static void scrollToElement(WebDriver driver, WebElement element) {
+        JavascriptExecutor jse = (JavascriptExecutor) driver;
+        jse.executeScript("arguments[0].scrollIntoView(true);", element);
+    }
+
+    public static void highlighElement(WebDriver pDriver, WebElement pWebElement) {
+        JavascriptExecutor jse = (JavascriptExecutor) pDriver;
+        jse.executeScript("arguments[0].style.backgroundColor = '#FDFF47';", pWebElement);
+    }
+
 
     private static void dispose(WebDriver driver) {
         driver.close();

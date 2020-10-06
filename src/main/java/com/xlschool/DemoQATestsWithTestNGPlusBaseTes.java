@@ -7,7 +7,7 @@ import org.openqa.selenium.support.Color;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class DemoQATestsWithTestNG extends Basetest {
+public class DemoQATestsWithTestNGPlusBaseTes extends Basetest {
 
 
 

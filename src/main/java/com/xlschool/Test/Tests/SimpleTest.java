@@ -1,4 +1,4 @@
-package com.xlschool.Test.Tests;
+package Tests;
 
 import com.xlschool.Utils.Logs.*;
 import org.testng.annotations.Test;
@@ -10,11 +10,11 @@ public class SimpleTest {
     @Test
     public void navigateToGoogle(){
 
-        debug(this.getClass(),"Test message to log somewhere");
-        error(this.getClass(),"Test message to log somewhere");
-        info(this.getClass(),"Test message to log somewhere");
-        warn(this.getClass(),"Test message to log somewhere");
-        fatal(this.getClass(),"Test message to log somewhere");
+        debug("tests-actions","Test message to log somewhere");
+        error("selenium-actions","Test message to log somewhere");
+        info("common-actions","Test message to log somewhere");
+        warn("tests-actions","Test message to log somewhere");
+        trace("common-actions","Test message to log somewhere");
 
     }
 }

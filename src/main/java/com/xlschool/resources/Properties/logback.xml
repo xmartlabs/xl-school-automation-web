@@ -11,7 +11,7 @@
 
     <!-- Send debug messages to a file Application.log with the testing steps" -->
     <appender name="APPLICATION-FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>src/main/resources/Logs/Application.log</file>
+        <file>src/main/java/com/xlschool/resources/Logs/Application.log</file>
         <append>true</append>
         <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
             <Pattern>%d{yyyy-MM-dd_HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</Pattern>
@@ -31,7 +31,7 @@
 
     <!-- Send debug messages to a file Selenium.log with the Selenium and Driver actions" -->
     <appender name="SELENIUM-FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>src/main/resources/Logs/Selenium.log</file>
+        <file>src/main/java/com/xlschool/resources/Logs/Selenium.log</file>
         <append>true</append>
         <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
             <Pattern>%d{yyyy-MM-dd_HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</Pattern>
@@ -53,11 +53,11 @@
         <appender-ref ref="SELENIUM-FILE" />
     </logger>
 
-    <logger name="tests-actions" level="DEBUG" additivity="true">
+    <logger name="tests-actions" level="TRACE" additivity="true">
         <appender-ref ref="APPLICATION-FILE" />
     </logger>
 
-    <logger name="common-actions" level="ERROR" additivity="true">
+    <logger name="common-actions" level="TRACE" additivity="true">
         <appender-ref ref="STDOUT"/>
         <appender-ref ref="APPLICATION-FILE" />
     </logger>

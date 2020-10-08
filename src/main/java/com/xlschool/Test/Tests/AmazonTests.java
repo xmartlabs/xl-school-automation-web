@@ -1,4 +1,4 @@
-package com.xlschool;
+package com.xlschool.Test.Tests;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;

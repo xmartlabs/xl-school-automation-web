@@ -1,13 +1,13 @@
-package com.xlschool;
+package com.xlschool.Test.Tests;
 
-import com.xlschool.Base.Basetest;
+import com.xlschool.Test.Base.BaseTest;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.Color;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class DemoQATestsWithTestNG extends Basetest {
+public class ElementsTestsWithTestNG extends BaseTest {
 
 
 

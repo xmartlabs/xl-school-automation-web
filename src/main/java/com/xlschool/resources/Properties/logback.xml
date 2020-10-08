@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+    <!-- Send debug messages to System.out -->
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <!-- By default, encoders are assigned the type ch.qos.logback.classic.encoder.PatternLayoutEncoder -->
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{5} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- Send debug messages to a file Application.log with the testing steps" -->
+    <appender name="APPLICATION-FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>src/main/resources/Logs/Application.log</file>
+        <append>true</append>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <Pattern>%d{yyyy-MM-dd_HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</Pattern>
+        </encoder>
+
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <FileNamePattern>*.%i.log.zip</FileNamePattern>
+            <MinIndex>1</MinIndex>
+            <MaxIndex>10</MaxIndex>
+        </rollingPolicy>
+
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <MaxFileSize>2MB</MaxFileSize>
+        </triggeringPolicy>
+    </appender>
+
+
+    <!-- Send debug messages to a file Selenium.log with the Selenium and Driver actions" -->
+    <appender name="SELENIUM-FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>src/main/resources/Logs/Selenium.log</file>
+        <append>true</append>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <Pattern>%d{yyyy-MM-dd_HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</Pattern>
+        </encoder>
+
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <FileNamePattern>*.%i.log.zip</FileNamePattern>
+            <MinIndex>1</MinIndex>
+            <MaxIndex>10</MaxIndex>
+        </rollingPolicy>
+
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <MaxFileSize>2MB</MaxFileSize>
+        </triggeringPolicy>
+    </appender>
+
+    <!-- Loggers -->
+    <logger name="selenium-actions" level="TRACE" additivity="true">
+        <appender-ref ref="SELENIUM-FILE" />
+    </logger>
+
+    <logger name="tests-actions" level="DEBUG" additivity="true">
+        <appender-ref ref="APPLICATION-FILE" />
+    </logger>
+
+    <logger name="common-actions" level="ERROR" additivity="true">
+        <appender-ref ref="STDOUT"/>
+        <appender-ref ref="APPLICATION-FILE" />
+    </logger>
+<!--    <root>-->
+<!--        <appender-ref ref="FILE"/>-->
+<!--    </root>-->
+
+    <!-- By default, the level of the root level is set to DEBUG -->
+    <root level="DEBUG">
+        <appender-ref ref="STDOUT" />
+    </root>
+</configuration>

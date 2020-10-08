@@ -1,4 +1,4 @@
-package com.xlschool.Test.Tests;
+package Tests;
 
 import com.xlschool.Test.Base.BaseTest;
 import org.openqa.selenium.By;

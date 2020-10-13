@@ -1,13 +1,8 @@
 package com.xlschool.Web.Driver;
 
-import com.xlschool.Web.PageObject.Base.BasePage;
-import com.xlschool.Web.PageObject.Pages.FormsPage;
-import com.xlschool.Web.PageObject.Pages.HomePage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-
-import static com.xlschool.Web.Utils.WebUtils.pauseDriver;
-import static org.openqa.selenium.support.PageFactory.*;
+import static com.xlschool.Web.Utils.Utils.pauseDriver;
 
 public class DriverHandler {
 
@@ -32,14 +27,22 @@ public class DriverHandler {
     }
 
     private void createDriver(){
-        try {
+
+        try{
             System.setProperty("webdriver.chrome.driver", "chromedriver");
             _driver = new ChromeDriver();
-            navigateToHomePage();
+            setDriverParameters();
+            navigateToHome();
+            pauseDriver();
         }catch (Exception e){
-            System.out.println("Something went wrong when creating the driver. Check -->");
+            System.out.println("Something went wrong when initializing the driver. ");
             e.printStackTrace();
+
         }
+    }
+
+    public static void navigateToHome() {
+        _driver.get(_baseUrl);
     }
 
     private static void setDriverParameters() {
@@ -48,38 +51,17 @@ public class DriverHandler {
     }
 
     public static void dispose(){
-        try {
+        try{
             if (_driver != null){
-            _driver.close();
-            _driver.quit();
+                _driver.close();
+                _driver.quit();
             }
             if (INSTANCE != null){
                 INSTANCE = null;
             }
         }catch (Exception e){
-            System.out.println("Something went wrong when killing the driver INSTANCE the driver. Check -->");
+            System.out.println("Something went wrong when killing the driver or killing the DriverHandler INSTANCE");
             e.printStackTrace();
         }
-    }
-
-
-    public static void navigateToHomePage() {
-        setDriverParameters();
-        _driver.get(_baseUrl);
-        pauseDriver();
-    }
-
-    public static FormsPage navigateToFormsPage() {
-        setDriverParameters();
-        _driver.get(_baseUrl + "/Forms");
-        pauseDriver();
-        return initElements(DriverHandler.getDriver(),FormsPage.class);
-    }
-
-    public static BasePage navigateToDesiredPage(BasePage pDesiredPage) {
-        setDriverParameters();
-        _driver.get(_baseUrl + "/Elements");
-        pauseDriver();
-        return initElements(DriverHandler.getDriver(),pDesiredPage.getClass());
     }
 }

@@ -1,6 +1,14 @@
-package com.xlschool.PageObject.Base;
+package com.xlschool.Web.PageObject.Base;
+
+import com.xlschool.Web.Driver.DriverHandler;
+import org.openqa.selenium.WebDriver;
 
 public class BasePage {
-    //mainHeader
-    //footer
+
+    protected static WebDriver _driver;
+
+    public BasePage(){
+        _driver = DriverHandler.getDriver();
+        DriverHandler.navigateToHome();
+    }
 }

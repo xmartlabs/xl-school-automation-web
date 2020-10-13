@@ -1,11 +1,17 @@
 package com.xlschool.Test.Tests;
 
 import com.xlschool.Test.Base.BaseTest;
+import com.xlschool.Web.PageObject.Pages.FormsPage;
+import com.xlschool.Web.PageObject.Pages.HomePage;
+import com.xlschool.Web.PageObject.Pages.PracticeFormsPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.Color;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+
+import static com.xlschool.Web.Driver.DriverHandler.getDriver;
+import static com.xlschool.Web.Utils.WebUtils.highlighElement;
 
 public class FormsTestsWithTestNG extends BaseTest {
 
@@ -13,29 +19,15 @@ public class FormsTestsWithTestNG extends BaseTest {
 
     @Test
     public void guionDeLucia(){
-        //Guion de lucia moverlo pa aca
-
         //Step 2
-        WebElement divForms = getDriver().findElement(By.xpath("//*[@class='category-cards']/div[contains(string(),'Forms')]"));
-        highlighElement(divForms);
-        pauseDriver();
-        divForms.click();
-        pauseDriver();
+        HomePage.navigateToForms();//Inside FormsPage
 
         //Step 3
-        WebElement spanForm = getDriver().findElement(By.xpath("//span[contains(string(),'Practice Form')]"));
-        highlighElement(spanForm);
-        pauseDriver();
-        spanForm.click();
+        FormsPage.navigateToPracticeForms();//Inside PracticeFormsPage
 
         //Step 4 (Assert Student Registration Form)
-        pauseDriver();
-        WebElement headerStudentRegistrationForm  = getDriver().findElement(By.xpath("//div[@class='practice-form-wrapper']//h5[contains(text(), 'Registration')]"));
-        highlighElement(headerStudentRegistrationForm);
-        pauseDriver();
-
+        String headerStudentRegistrationFormActualText = PracticeFormsPage.getRegistrationFormTitle();
         String headerStudentRegistrationFormExpectedText = "Student Registration Form";
-        String headerStudentRegistrationFormActualText = headerStudentRegistrationForm.getText();
         Assert.assertEquals(headerStudentRegistrationFormActualText,headerStudentRegistrationFormExpectedText);
 
 

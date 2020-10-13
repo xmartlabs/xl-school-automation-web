@@ -14,12 +14,12 @@ public class Utils {
         }
     }
 
-    public void highlighElement(WebElement pWebElement) {
+    public static void highlighElement(WebElement pWebElement) {
         JavascriptExecutor jse = (JavascriptExecutor) DriverHandler.getDriver();
         jse.executeScript("arguments[0].style.backgroundColor = '#FDFF47';", pWebElement);
     }
 
-    public void scrollToElement(WebElement element) {
+    public static void scrollToElement(WebElement element) {
         JavascriptExecutor jse = (JavascriptExecutor) DriverHandler.getDriver();
         jse.executeScript("arguments[0].scrollIntoView(true);", element);
     }

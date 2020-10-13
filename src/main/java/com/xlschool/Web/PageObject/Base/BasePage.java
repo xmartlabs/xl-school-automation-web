@@ -9,6 +9,5 @@ public class BasePage {
 
     public BasePage(){
         _driver = DriverHandler.getDriver();
-        DriverHandler.navigateToHome();
     }
 }

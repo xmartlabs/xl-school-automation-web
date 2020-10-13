@@ -1,16 +1,11 @@
-package com.xlschool.Test.Tests;
+package com.xlschool.Web.Tests;
 
-import com.xlschool.Test.Base.BaseTest;
-import com.xlschool.Web.PageObject.Pages.FormsPage;
-import com.xlschool.Web.PageObject.Pages.HomePage;
-import com.xlschool.Web.PageObject.Pages.PracticeFormsPage;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.Color;
+import com.xlschool.framework.tests.base.BaseTest;
+import com.xlschool.Web.Pages.FormsPage;
+import com.xlschool.Web.Pages.HomePage;
+import com.xlschool.Web.Pages.PracticeFormsPage;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-
-import java.text.Normalizer;
 
 public class FormsTestsWithTestNGPlusBaseTest extends BaseTest {
 

@@ -1,9 +1,9 @@
-package com.xlschool.Web.Utils;
+package com.xlschool.framework.utils;
 
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 
-import static com.xlschool.Web.Driver.DriverHandler.getDriver;
+import static com.xlschool.framework.driver.DriverHandler.getDriver;
 
 public class WebUtils {
     public static void pauseDriver() {

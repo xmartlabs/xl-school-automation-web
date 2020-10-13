@@ -1,6 +1,6 @@
-package com.xlschool.Web.Utils;
+package com.xlschool.framework.utils;
 
-import com.xlschool.Web.Driver.DriverHandler;
+import com.xlschool.framework.driver.DriverHandler;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 

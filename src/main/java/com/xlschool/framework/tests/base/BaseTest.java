@@ -1,12 +1,10 @@
-package com.xlschool.Test.Base;
+package com.xlschool.framework.tests.base;
 
-import com.xlschool.Web.Driver.DriverHandler;
-import com.xlschool.Web.PageObject.Pages.HomePage;
-import org.openqa.selenium.WebDriver;
+import com.xlschool.Web.Pages.HomePage;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
-import static com.xlschool.Web.Driver.DriverHandler.dispose;
+import static com.xlschool.framework.driver.DriverHandler.dispose;
 
 public class BaseTest {
 

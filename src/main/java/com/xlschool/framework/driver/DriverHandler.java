@@ -1,8 +1,8 @@
-package com.xlschool.Web.Driver;
+package com.xlschool.framework.driver;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import static com.xlschool.Web.Utils.Utils.pauseDriver;
+import static com.xlschool.framework.utils.Utils.pauseDriver;
 
 public class DriverHandler {
 

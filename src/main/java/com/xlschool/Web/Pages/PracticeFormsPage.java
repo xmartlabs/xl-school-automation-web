@@ -1,12 +1,12 @@
-package com.xlschool.Web.PageObject.Pages;
+package com.xlschool.Web.Pages;
 
-import com.xlschool.Web.PageObject.Base.BasePage;
+import com.xlschool.framework.pages.base.BasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
-import static com.xlschool.Web.Driver.DriverHandler.getDriver;
-import static com.xlschool.Web.Utils.Utils.highlighElement;
-import static com.xlschool.Web.Utils.Utils.pauseDriver;
+import static com.xlschool.framework.driver.DriverHandler.getDriver;
+import static com.xlschool.framework.utils.Utils.highlighElement;
+import static com.xlschool.framework.utils.Utils.pauseDriver;
 
 public class PracticeFormsPage extends BasePage {
     public static String getRegistrationFormHeader(){

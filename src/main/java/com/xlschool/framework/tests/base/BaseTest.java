@@ -10,7 +10,7 @@ public class BaseTest {
 
     @BeforeMethod
     public void beforeMethod(){
-        new HomePage();
+        HomePage.getLanding();
     }
 
     @AfterMethod

@@ -30,11 +30,11 @@ public class HomePage extends BasePage {
     private static WebElement divElements;
 
 
-    @FindBys({
+    @FindBys(value = {
             @FindBy(className = "category-cards"),
             @FindBy(className = "card mt-4 top-card"),
             @FindBy(className = "card-body"),
-            @FindBy(tagName = "h5")
+            @FindBy( xpath = ".//h5")
     })
     private static List<WebElement> cards;
 
